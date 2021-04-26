@@ -9,38 +9,44 @@ injectGlobal`
 
 const DisplayScreen = styled.div`
   width: 100%;
-  height: 50px;
+  height: 75px;
   background: linear-gradient(#8ebf96, #2a8f3f);
   display: flex;
-  align-items: center;
-  justify-content: flex-end;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
   box-shadow:
-    inset 0 2px 3px rgba(255,255,255,0.13),
-    0 5px 8px rgba(0,0,0,0.3),
-    0 10px 10px 4px rgba(0,0,0,0.3);
+    0 2px 3px 1px rgba(0,0,0,0.4);
 
     p {
       font-family: 'Chakra Petch', sans-serif;
       color: #434343;
       text-transform: uppercase;
-      font-size: 20px;
+      font-size: 23px;
+      margin: 0;
       margin-left: 20px;
       margin-right: 20px;
       font-weight: 600;
       text-shadow: 0 0 2px #5e5e5e;
+
+      &:first-of-type {
+        font-size: 15px;
+      }
     }
 `
 
-const Display = ({ text }) => {
+const Display = ({ actual, last }) => {
   return (
     <DisplayScreen>
-      <p>{text}</p>
+      <p role="displayLast">{last}</p>
+      <p role="displayActual">{actual}</p>
     </DisplayScreen>
   )
 }
 
 Display.propTypes = {
-  text: PropTypes.string.isRequired,
+  actual: PropTypes.string.isRequired,
+  last: PropTypes.string.isRequired,
 }
 
 export default Display

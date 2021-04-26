@@ -41,6 +41,7 @@ const Button = styled.div`
     color: white;
     font-size: 22px;
     font-weight: 500;
+    user-select: none;
   }
 
   &:after {
@@ -68,13 +69,13 @@ const Button = styled.div`
 `
 
 const pressed = css`
-  color: #36b9ce !important;
-  text-shadow: 0 0 5px #00ffc4;
+  color: #25a4b8 !important;
+  text-shadow: 0 0 7px #00ffc4;
 `
 
-const CalcButton = ({ text, active }) => {
+const CalcButton = ({ text, active, onClick }) => {
   return (
-    <Button>
+    <Button onClick={onClick}>
       <input type="button" />
       <p css={active ? css`${pressed}` : ''}>{text}</p>
     </Button>
@@ -84,6 +85,7 @@ const CalcButton = ({ text, active }) => {
 CalcButton.propTypes = {
   text: PropTypes.string.isRequired,
   active: PropTypes.bool,
+  onClick: PropTypes.func.isRequired,
 }
 
 CalcButton.defaultProps = {
